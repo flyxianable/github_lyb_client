@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:gsy_github_flutter_follow/page/ui/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class LoginWebPage extends StatefulWidget {
@@ -18,6 +21,13 @@ class LoginWebPage extends StatefulWidget {
 
 class WebState extends State<LoginWebPage> {
   bool isloading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +55,11 @@ class WebState extends State<LoginWebPage> {
               setState(() {
                 isloading = false;
               });
-              EasyLoading.dismiss();
+              // Loading.dismissEasyLoading();
             },
           ),
-          if (isloading) buildLoading()
+          if (isloading)
+            Loading.buildSpinLoading(context)
         ],
       ),
     );
@@ -58,32 +69,9 @@ class WebState extends State<LoginWebPage> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    // EasyLoading.instance.backgroundColor = Colors.white;
-    // EasyLoading.instance.indicatorType = EasyLoadingIndicatorType.ring;
-    // // EasyLoading.instance.indicatorColor = Colors.grey;
-    // EasyLoading.instance.maskColor = Colors.blue.withOpacity(0.5);
 
-    EasyLoading.instance
-      ..displayDuration = const Duration(milliseconds: 2000)
-      ..indicatorType = EasyLoadingIndicatorType.fadingCircle
-      ..loadingStyle = EasyLoadingStyle.dark
-      ..indicatorSize = 45.0
-      ..radius = 10.0
-      ..backgroundColor = Colors.green
-      ..indicatorColor = Colors.yellow
-      ..textColor = Colors.yellow
-      ..maskColor = Colors.blue.withOpacity(0.5);
+    // Loading.showEasyLoading();
 
-
-    EasyLoading.show();
   }
 
-  Widget buildLoading() {
-    return Center(
-      child: Text(
-        "loading",
-        style: TextStyle(fontSize: 36, color: Colors.blue),
-      ),
-    );
-  }
 }
