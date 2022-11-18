@@ -10,8 +10,8 @@ class AniBackground {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xfff44336),
-            Color(0xff2196f3),
+            Color(0xbfa62bd4),
+            Color(0xff21cef3),
           ],
           stops: [
             0,
@@ -23,9 +23,9 @@ class AniBackground {
       child: PlasmaRenderer(
         type: PlasmaType.bubbles,
         particles: 27,
-        color: Color(0x441ed773),
+        color: Color(0xecd82525),
         blur: 0.16,
-        size: 0.39,
+        size: 0.38,
         speed: 1.35,
         offset: 0,
         blendMode: BlendMode.screen,

@@ -21,9 +21,9 @@ class _LoginState extends State<LoginPage> {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("login page"),
-        ),
+        // appBar: AppBar(
+        //   title: Text("login page"),
+        // ),
         body: Container(
           color: Colors.transparent,
           child: Stack(
