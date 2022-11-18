@@ -15,7 +15,6 @@ class LoginWebPage extends StatefulWidget {
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return new WebState();
-    ;
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
+import 'package:gsy_github_flutter_follow/page/net/git_login_dio.dart';
 
 import 'ani/ani_background.dart';
 import 'net/address.dart';
@@ -89,5 +90,6 @@ class _LoginState extends State<LoginPage> {
   authLogin() async {
     String code = await goWebviewRoute();
     print("gsy code = " + code);
+    GitLoginDio.dioGitLogin(code);
   }
 }
