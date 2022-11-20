@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gsy_github_flutter_follow/entity/git_login_bean.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
 import 'package:gsy_github_flutter_follow/page/net/git_login_dio.dart';
+import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
 
 import 'ani/ani_background.dart';
 import 'net/address.dart';
@@ -79,17 +81,14 @@ class _LoginState extends State<LoginPage> {
     );
   }
 
-  Future goWebviewRoute() {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => LoginWebPage(Address.getOAuthUrl(), "webview")),
-    );
-  }
+
 
   authLogin() async {
-    String code = await goWebviewRoute();
+    String code = await GitRoute.goWebviewRoute(context, Address.getOAuthUrl(), "webview");
     print("gsy code = " + code);
-    GitLoginDio.dioGitLogin(code);
+    GitLoginBean gitLoginBean = await GitLoginDio.dioGitLogin(code);
+    if(gitLoginBean != null && gitLoginBean.tokenType != null){
+      GitRoute.goHomeRoute(context);
+    }
   }
 }

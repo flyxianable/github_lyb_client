@@ -138,3 +138,7 @@ flutter:
   assets:
     - static/images/
     - static/file/
+  fonts:
+    - family: aliIconFont
+      fonts:
+        - asset: static/font/iconfont.ttf

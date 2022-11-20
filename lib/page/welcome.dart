@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
+import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
 import 'package:rive/rive.dart';
 
 import 'login_page.dart';
@@ -92,15 +93,10 @@ class WelcomeState extends State<WelcomePage> {
     });
 
     new Future.delayed(Duration(seconds: 2, microseconds: 500), () {
-      goWebviewRoute();
+      GitRoute.goLoginRoute(context);
     });
 
   }
 
-  void goWebviewRoute(){
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
-  }
+
 }

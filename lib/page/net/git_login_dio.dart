@@ -9,7 +9,7 @@ import 'address.dart';
 class GitLoginDio {
 
 
-  static Future dioGitLogin(String code) async {
+  static Future<GitLoginBean> dioGitLogin(String code) async {
 
     Dio dio = Dio();
     String url = Address.getLoginUrl(code);
@@ -21,15 +21,6 @@ class GitLoginDio {
     // ///请求header的配置
     // options.contentType="application/json";
 
-    // 添加拦截器
-    // dio.interceptors
-    //   ..add(LogInterceptor(
-    //     requestHeader: true,
-    //     requestBody: true,
-    //     responseHeader: true,
-    //     responseBody: true,
-    //   ));
-
     // 发起请求
     Response response = await dio.post(url);
     Uri uri = Uri.parse("gsy://oauth?" + response.data);
@@ -40,6 +31,7 @@ class GitLoginDio {
     print("gsy response.data =" + response.data);
     GitLoginBean gitLoginBean = new GitLoginBean(accessToken: token, scope: scope, tokenType: token_type);
     print("gsy gitLoginBean =" + gitLoginBean.accessToken.toString());
+    return gitLoginBean;
 
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
 import 'package:gsy_github_flutter_follow/page/welcome.dart';
 
 void main() {
@@ -61,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      goRoute();
+
+      GitRoute.goWelcomeRoute(context);
     });
   }
 
@@ -117,10 +119,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void goRoute(){
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => WelcomePage()),
-    );
-  }
 }
