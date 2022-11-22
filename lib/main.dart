@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
 import 'package:gsy_github_flutter_follow/page/welcome.dart';
+import 'package:gsy_github_flutter_follow/route/page_route.dart';
 
 void main() {
   runApp(const MyApp());

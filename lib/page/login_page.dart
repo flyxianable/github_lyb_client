@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:gsy_github_flutter_follow/common/share_names.dart';
 import 'package:gsy_github_flutter_follow/entity/git_login_bean.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
-import 'package:gsy_github_flutter_follow/page/net/git_login_dio.dart';
-import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
-
-import 'ani/ani_background.dart';
-import 'net/address.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../ani/ani_background.dart';
+import '../entity/git_userinfo.dart';
+import '../net/address.dart';
+import '../net/git_login_dio.dart';
+import '../net/userinfo_dio.dart';
+import '../route/page_route.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -81,14 +86,21 @@ class _LoginState extends State<LoginPage> {
     );
   }
 
-
-
   authLogin() async {
-    String code = await GitRoute.goWebviewRoute(context, Address.getOAuthUrl(), "webview");
+    String code = await GitRoute.goWebviewRoute(
+        context, Address.getOAuthUrl(), "webview");
+
     print("gsy code = " + code);
     GitLoginBean gitLoginBean = await GitLoginDio.dioGitLogin(code);
-    if(gitLoginBean != null && gitLoginBean.tokenType != null){
-      GitRoute.goHomeRoute(context);
+    if (gitLoginBean.accessToken != null) {
+      GitUserInfo gitUserInfo =
+          await UserinfoDio.requestUserInfo(gitLoginBean.accessToken!);
+      print("gsy gitUserInfo.login = " + gitUserInfo.login.toString());
+      if (gitUserInfo != null && gitUserInfo.login != null) {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString(ShareNames.userName, gitUserInfo.login.toString());
+        GitRoute.goHomeRoute(context);
+      }
     }
   }
 }

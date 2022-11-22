@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
-import 'package:gsy_github_flutter_follow/page/route/page_route.dart';
 import 'package:rive/rive.dart';
 
+import '../route/page_route.dart';
 import 'login_page.dart';
 
 class WelcomePage extends StatefulWidget {

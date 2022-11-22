@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:gsy_github_flutter_follow/page/ui/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../ui/loading.dart';
 
 class LoginWebPage extends StatefulWidget {
   late String url;

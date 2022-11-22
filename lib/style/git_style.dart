@@ -4,7 +4,6 @@ class GitStyle{
 
   static const String FONT_FAMILY = 'aliIconFont';
 
-
   static const IconData MAIN_DYNIMIC =
   const IconData(0xe672, fontFamily: FONT_FAMILY);
 

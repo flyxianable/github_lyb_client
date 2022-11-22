@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gsy_github_flutter_follow/page/home_page.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
 
-import '../login_page.dart';
-import '../welcome.dart';
+import '../page/login_page.dart';
+import '../page/welcome.dart';
+
 
 class GitRoute {
 
