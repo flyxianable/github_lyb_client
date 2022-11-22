@@ -27,6 +27,9 @@ class GitDynamicDio {
     Response response = await dio.get(url);
     List<GitEvent> listEvent = [];
     List<dynamic> result = response.data;
+    if(result == null || result.length == 0){
+      return listEvent;
+    }
     print("gsy dynamic result =" + result.toString());
     for(int i=0; i< result.length; i++){
       GitEvent event = GitEvent.fromJson(response.data[i]);
