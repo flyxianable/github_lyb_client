@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gsy_github_flutter_follow/page/dynamic_page.dart';
 
 import '../style/git_style.dart';
+import 'dynamic_smart_refresh_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class HomeState extends State<HomePage> {
         ),
         body: TabBarView(
           children: [
-            DynamicPage("动态"),
+            DynamicSmartRefreshPage("动态"),
             DynamicPage("趋势"),
             DynamicPage("我的"),
           ],

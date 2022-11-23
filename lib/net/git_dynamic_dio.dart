@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:gsy_github_flutter_follow/common/share_names.dart';
@@ -7,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'address.dart';
 
 class GitDynamicDio {
-  static Future<List<GitEvent>> requestGitDynamic(String userName, int page) async {
+  static Future<List<GitEvent>> requestGitDynamic(
+      String userName, int page) async {
     Dio dio = Dio();
     String url =
         Address.getEventReceived(userName) + Address.getPageParams("?", page);
@@ -24,24 +26,31 @@ class GitDynamicDio {
       dio.options.headers["Authorization"] = "token " + accessToken.toString();
     }
 
-    Response response = await dio.get(url);
     List<GitEvent> listEvent = [];
-    List<dynamic> result = response.data;
-    if(result == null || result.length == 0){
+    try {
+      Response response = await dio.get(url);
+      if (response.statusCode != HttpStatus.ok) {
+        return listEvent;
+      }
+      List<dynamic> result = response.data;
+      if (result == null || result.length == 0) {
+        return listEvent;
+      }
+      print("gsy dynamic result =" + result.toString());
+      for (int i = 0; i < result.length; i++) {
+        GitEvent event = GitEvent.fromJson(response.data[i]);
+        listEvent.add(event);
+        if (event != null && event.actor != null && event.actor?.url != null) {
+          print("gsy dynamic event =" +
+              i.toString() +
+              " ~ " +
+              event.actor!.url.toString());
+        }
+      }
+    } catch (e) {
+      print(e);
       return listEvent;
     }
-    print("gsy dynamic result =" + result.toString());
-    for(int i=0; i< result.length; i++){
-      GitEvent event = GitEvent.fromJson(response.data[i]);
-      listEvent.add(event);
-      if (event != null &&
-          event.actor != null &&
-          event.actor?.url != null) {
-        print("gsy dynamic event =" + i.toString() + " ~ " + event.actor!.url.toString());
-      }
-    }
     return listEvent;
-
-
   }
 }
