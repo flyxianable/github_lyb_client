@@ -7,10 +7,10 @@ import 'package:gsy_github_flutter_follow/net/git_dynamic_dio.dart';
 import '../common/config/config.dart';
 import '../ui/loading.dart';
 
-class DynamicPage extends StatefulWidget {
+class DynamicRefreshIndicatorPage extends StatefulWidget {
   String? title;
 
-  DynamicPage(this.title);
+  DynamicRefreshIndicatorPage(this.title);
 
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +19,7 @@ class DynamicPage extends StatefulWidget {
   }
 }
 
-class StateDynamic extends State<DynamicPage> {
+class StateDynamic extends State<DynamicRefreshIndicatorPage> {
   String? title;
   List<GitEvent>? listEvent;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gsy_github_flutter_follow/page/dynamic_page.dart';
+import 'package:gsy_github_flutter_follow/page/dynamic_refreshindicator_page.dart';
 
 import '../style/git_style.dart';
 import 'dynamic_smart_refresh_page.dart';
@@ -32,8 +32,8 @@ class HomeState extends State<HomePage> {
         body: TabBarView(
           children: [
             DynamicSmartRefreshPage("动态"),
-            DynamicPage("趋势"),
-            DynamicPage("我的"),
+            DynamicRefreshIndicatorPage("趋势"),
+            DynamicRefreshIndicatorPage("我的"),
           ],
 
         ),
