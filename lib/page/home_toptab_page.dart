@@ -4,7 +4,7 @@ import 'package:gsy_github_flutter_follow/page/dynamic_refreshindicator_page.dar
 import '../style/git_style.dart';
 import 'dynamic_smart_refresh_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomeTopTabPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
   }
 }
 
-class HomeState extends State<HomePage> {
+class HomeState extends State<HomeTopTabPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gsy_github_flutter_follow/page/home_page.dart';
+import 'package:gsy_github_flutter_follow/page/home_bottom_tab_page.dart';
+import 'package:gsy_github_flutter_follow/page/home_toptab_page.dart';
 import 'package:gsy_github_flutter_follow/page/login_web_page.dart';
 
 import '../page/login_page.dart';
@@ -39,10 +40,17 @@ class GitRoute {
     );
   }
 
-  static void goHomeRoute(BuildContext context) {
+  static void goTopTabHomeRoute(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => HomeTopTabPage()),
+    );
+  }
+
+  static void goBottomTabHomeRoute(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeBottomTabPage()),
     );
   }
 }

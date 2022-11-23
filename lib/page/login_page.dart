@@ -99,7 +99,8 @@ class _LoginState extends State<LoginPage> {
       if (gitUserInfo != null && gitUserInfo.login != null) {
         final prefs = await SharedPreferences.getInstance();
         prefs.setString(ShareNames.userName, gitUserInfo.login.toString());
-        GitRoute.goHomeRoute(context);
+        // GitRoute.goTopTabHomeRoute(context);
+        GitRoute.goBottomTabHomeRoute(context);
       }
     }
   }
