@@ -121,7 +121,7 @@ class StateDynamic extends State<DynamicRefreshIndicatorPage> {
     List<GitEvent> result =
         await GitDynamicDio.requestGitDynamic("flyxianable", page);
     /**
-     * 下一页并且
+     * 下一页并且返回数据少于一页
      */
     if (!isRefresh && (result == null || result.length < Config.PAGE_SIZE)) {
       scrollController.removeListener(scrollListener);

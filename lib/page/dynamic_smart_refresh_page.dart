@@ -70,7 +70,7 @@ class StateDynamic extends State<DynamicSmartRefreshPage> {
             controller: _refreshController,
             onRefresh: () {
               print("gsy : onRefresh()");
-              request(false);
+              request(true);
             },
             onLoading: () {
               if (haveNextPage) {
