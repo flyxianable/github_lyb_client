@@ -86,7 +86,7 @@ class WelcomeState extends State<WelcomePage> {
 
     new Future.delayed(Duration(seconds: 1, microseconds: 500), () {
       setState(() {
-        text = "GSYGithubApp";
+        text = "lybGitClientApp";
         fontSize = 50;
         color = Colors.blue;
       });
